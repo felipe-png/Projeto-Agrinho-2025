@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Análise da Conexão Campo-Cidade</title>
+    <title>Conexão Campo e Cidade</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,15 +17,23 @@
             <h1 class="animate-fade-in">A Conexão Essencial</h1>
             <h2 class="animate-fade-in delay-1">Interdependência entre Ambientes Rural e Urbano</h2>
             <p class="hero-description animate-fade-in delay-2">Uma análise aprofundada sobre a simbiose fundamental entre o campo e a cidade, revelando os elos que moldam o nosso presente e direcionam o futuro.</p>
-            <a href="#integrated-future" class="btn animate-fade-in delay-3">Explore o Conteúdo</a>
+            <a href="#about-connection" class="btn animate-fade-in delay-3">Explore o Conteúdo</a> <!-- Removido button-spacing para nova abordagem -->
         </div>
     </header>
+
+    <section id="about-connection" class="section-container about-connection">
+        <div class="content-wrapper">
+            <h3 class="animate-on-scroll">O que é a Conexão Campo-Cidade?</h3>
+            <p class="animate-on-scroll delay-small">A "Conexão Campo-Cidade" refere-se à intrínseca e mútua dependência entre as áreas rurais e urbanas. Essa relação vai muito além da simples troca de produtos e serviços; ela engloba fluxos contínuos de pessoas, ideias, capital, tecnologias e recursos naturais.</p>
+            <p class="animate-on-scroll delay-medium">Historicamente, as cidades dependem do campo para o fornecimento de alimentos, matérias-primas e água, enquanto as áreas rurais se beneficiam do acesso a mercados, serviços (saúde, educação), tecnologias e inovações geradas nos centros urbanos. Compreender essa dinâmica é fundamental para o desenvolvimento sustentável e equilibrado de ambos os ambientes.</p>
+        </div>
+    </section>
 
     <section id="integrated-future" class="section-container integrated-future">
         <div class="content-wrapper">
             <h3 class="animate-on-scroll">Cultivando o Futuro: Uma Perspectiva Integrada</h3>
             <p class="animate-on-scroll delay-small">A harmonia entre o campo e a cidade é a base para um futuro próspero e equilibrado para todos. Aqui, exploramos como a <strong>inovação no ambiente rural</strong> impulsiona o progresso urbano, e de que forma as <strong>necessidades das cidades</strong> moldam as práticas agrícolas.</p>
-            <p class="animate-on-scroll delay-medium">É um ciclo dinâmico de troca de conhecimentos, tecnologias e recursos que beneficia a sociedade como um todo. Entender essa interdependência é essencial para construir soluções sustentáveis, assegurar a disponibilidade de alimentos e fortalecer os laços que nos conectam, desde a produção primária até o consumo final. Convidamos você a explorar os pilares dessa fascinante conexão.</p>
+            <p class="animate-on-scroll delay-medium">É um ciclo dinâmico de troca de conhecimentos, tecnologias e recursos que beneficia a sociedade como um todo. Entender essa interdependência é essencial para construir soluções sustentáveis, assegurar a disponibilidade de alimentos e valorizar os laços que nos conectam, desde a produção primária até o consumo final. Convidamos você a explorar os pilares dessa fascinante conexão.</p>
         </div>
     </section>
 
@@ -72,15 +80,15 @@
             <h3 class="animate-on-scroll">Conexões Visuais</h3>
             <div class="image-gallery">
                 <div class="gallery-item animate-on-scroll delay-small">
-                    <img src="criançanafazenda.jpg">
+                    <img src="criançanafazenda.jpg" alt="Criança alimentando um porco em uma fazenda.">
                     <p>Alegria e aprendizado no contato direto com a natureza.</p>
                 </div>
                 <div class="gallery-item animate-on-scroll delay-medium">
-                    <img src="feiranacidade.jpg">
+                    <img src="feiranacidade.jpg" alt="Feira de produtores rurais na cidade.">
                     <p>A vibrante energia das feiras livres, trazendo o campo para a cidade.</p>
                 </div>
                 <div class="gallery-item animate-on-scroll delay-large">
-                    <img src="tecnologianocampo.jpg">
+                    <img src="tecnologianocampo.jpg" alt="Trator trabalhando em uma lavoura de amendoim.">
                     <p>Inovação e sustentabilidade: o futuro da agricultura ao alcance das mãos.</p>
                 </div>
             </div>
@@ -88,8 +96,12 @@
     </section>
 
     <section class="section-container final-message">
+        <div class="final-message-background-overlay"></div>
         <div class="content-wrapper">
-            <h3 class="animate-on-scroll">Construindo o Futuro Juntos</h3>
+            <h3 class="animate-on-scroll final-message-title">Construindo o Futuro Juntos</h3>
+            <div class="leaf leaf-1 animate-on-scroll delay-extra-large"></div>
+            <div class="leaf leaf-2 animate-on-scroll delay-extra-large"></div>
+            <div class="leaf leaf-3 animate-on-scroll delay-extra-large"></div>
             <p class="animate-on-scroll delay-small">A profunda interconexão entre o campo e a cidade representa a base sólida para um desenvolvimento harmonioso e verdadeiramente sustentável. Ao valorizarmos essa simbiose vital, pavimentamos o caminho para um futuro mais próspero, resiliente e equitativo para todos.</p>
             <p class="animate-on-scroll delay-medium">Que esta análise inspire a contínua colaboração, o respeito mútuo e o reconhecimento da importância intrínseca de cada elo nesta vasta e interligada teia que nos une. Juntos, podemos construir um amanhã melhor.</p>
         </div>
@@ -97,21 +109,21 @@
 
     <footer class="main-footer">
         <div class="footer-content-wrapper">
-            <div class="footer-section footer-about">
+            <div class="footer-section footer-about animate-footer-section delay-small">
                 <h4>Sobre este Artigo</h4>
                 <p>Este material explora a dinâmica e a interdependência entre o ambiente rural e urbano, abordando seus impactos sociais, econômicos e ambientais.</p>
             </div>
-            <div class="footer-section footer-contact">
+            <div class="footer-section footer-contact animate-footer-section delay-medium">
                 <h4>Contato</h4>
-                <p><i class="fas fa-envelope"></i> E-mail: <a href="mailto:felipe.lopes.araujo@escola.pr.gov.br">felipe.lopes.araujo@escola.pr.gov.br</a></p>
+                <p><i class="fas fa-envelope"></i> E-mail: <a href="mailto:felipe.lopes.araujo@gmail.com">felipe.lopes.araujo@gmail.com</a></p>
             </div>
-            <div class="footer-section footer-credits">
+            <div class="footer-section footer-credits animate-footer-section delay-large">
                 <h4>Avisos</h4>
                 <p class="image-source">Imagens: <a href="https://www.pexels.com" target="_blank" rel="noopener noreferrer">Pexels</a> (uso livre).</p>
                 <p class="created-by">Desenvolvido com apoio de <strong>Gemini 2.5 Flash</strong>.</p>
             </div>
         </div>
-        <div class="footer-bottom">
+        <div class="footer-bottom animate-footer-bottom delay-extra-large">
             <p>&copy; 2025. Todos os direitos reservados.</p>
         </div>
     </footer>

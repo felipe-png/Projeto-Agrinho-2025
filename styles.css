@@ -21,10 +21,10 @@ html {
 
 body {
     font-family: 'Roboto', sans-serif;
-    line-height: 1.6;
+    line-height: 1.6; /* Padrão de linha para todo o body */
     color: var(--darkgreen);
     background-color: var(--cream);
-    overflow-x: hidden;
+    overflow-x: hidden; /* Evita scroll horizontal */
 }
 
 /* Tipografia Global */
@@ -35,7 +35,7 @@ h1 {
     text-shadow: 4px 4px 15px rgba(0, 0, 0, 0.6);
     margin-bottom: 0.1em;
     line-height: 1;
-    letter-spacing: -1px;
+    letter-spacing: -0.03em; /* Ajuste sutil para um look mais humano */
 }
 
 h2 {
@@ -45,6 +45,7 @@ h2 {
     text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
     margin-bottom: 0.8em;
     line-height: 1.2;
+    letter-spacing: -0.01em; /* Ajuste sutil */
 }
 
 h3 {
@@ -54,19 +55,26 @@ h3 {
     text-align: center;
     margin-bottom: 1em;
     position: relative;
-    padding-bottom: 15px;
+    padding-bottom: 15px; /* Espaço para o underline animado */
 }
 
+/* Underline animado para todos os h3 que aparecem ao rolar */
 h3::after {
     content: '';
     position: absolute;
     left: 50%;
     bottom: 0;
-    transform: translateX(-50%);
-    width: 80px;
+    transform: translateX(-50%) scaleX(0); /* Começa invisível e sem largura */
+    transform-origin: center;
+    width: 100px; /* Largura máxima da linha */
     height: 4px;
-    background-color: var(--mediumgreen);
+    background-color: var(--mediumgreen); /* Cor padrão da linha */
     border-radius: 2px;
+    transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1); /* Transição para o scaleX */
+}
+
+h3.is-visible::after {
+    transform: translateX(-50%) scaleX(1); /* Cresce do centro para fora */
 }
 
 h4 {
@@ -75,11 +83,13 @@ h4 {
     font-weight: 700;
     color: var(--cream);
     margin-bottom: 0.5em;
+    letter-spacing: 0.02em; /* Um pouco mais de espaçamento para cabeçalhos menores */
 }
 
 p {
     font-size: 1.1em;
     color: var(--darkgreen);
+    line-height: 1.7; /* Aumentado para melhor legibilidade */
 }
 
 strong {
@@ -116,15 +126,16 @@ strong {
     text-decoration: none;
     font-weight: 700;
     font-size: 1.1em;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease-in-out; /* Transição mais suave */
     border: 2px solid var(--mediumgreen);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    margin-top: 20px; /* Para abaixar o botão */
 }
 
 .btn:hover {
     background-color: var(--lightgreen);
     border-color: var(--lightgreen);
-    transform: translateY(-3px);
+    transform: translateY(-3px) scale(1.02); /* Levemente cresce no hover */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
@@ -164,6 +175,7 @@ strong {
     position: relative;
     height: 100vh;
     background: url('arvoreverdedopexels.jpg') no-repeat center center/cover;
+    background-attachment: fixed; /* Efeito Parallax Sutil */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -185,25 +197,55 @@ strong {
     z-index: 2;
     max-width: 900px;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
 /* Estilo para a descrição do Hero */
 .hero-description {
     color: var(--cream);
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    font-size: 1.2em; /* Levemente maior */
 }
 
 /* Animação genérica para elementos que aparecem ao rolar */
 .animate-on-scroll {
     opacity: 0;
-    transform: translateY(30px); /* Começa um pouco mais abaixo */
-    transition: opacity 0.9s ease-out, transform 0.9s ease-out; /* Transição mais suave */
+    transform: translateY(30px);
+    transition: opacity 0.9s ease-out, transform 0.9s ease-out;
 }
 
 .animate-on-scroll.is-visible {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* Novas animações para o rodapé */
+.animate-footer-section {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+}
+
+.animate-footer-section.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.animate-footer-bottom {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+}
+
+.animate-footer-bottom.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 /* Atrasos para as animações de rolagem */
 .delay-small { transition-delay: 0.1s; }
@@ -212,7 +254,28 @@ strong {
 .delay-extra-large { transition-delay: 0.4s; }
 
 
-/* Seção: Cultivando o Futuro */
+/* Nova seção "O que é a Conexão Campo-Cidade?" */
+.about-connection {
+    background-color: var(--lightgreen);
+    color: var(--darkgreen);
+    text-align: center;
+    padding: 60px 0;
+    box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.about-connection h3 {
+    color: var(--darkgreen);
+}
+
+.about-connection p {
+    max-width: 800px;
+    margin: 0 auto 1.5em;
+    line-height: 1.8;
+    color: var(--darkgreen);
+}
+
+
+/* Seção: Cultivando o Futuro (Voltou à cor original) */
 .integrated-future {
     background-color: var(--white);
     text-align: center;
@@ -231,7 +294,7 @@ strong {
 }
 
 
-/* Pilares */
+/* Pilares (Voltou à cor original) */
 .pillars {
     background-color: var(--cream);
     padding-bottom: 60px;
@@ -251,7 +314,7 @@ strong {
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transição mais suave */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -260,7 +323,7 @@ strong {
 }
 
 .pillar-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px) scale(1.02); /* Levemente cresce no hover */
     background-color: var(--darkgreen);
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
 }
@@ -269,7 +332,7 @@ strong {
     font-size: 3.5em;
     color: var(--lightgreen);
     margin-bottom: 20px;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease-in-out;
 }
 
 .pillar-card:hover .icon-large {
@@ -281,7 +344,7 @@ strong {
     font-size: 0.95em;
 }
 
-/* Galeria de Imagens */
+/* Galeria de Imagens (Voltou à cor original) */
 .image-spotlight {
     background-color: var(--white);
     padding: 80px 0;
@@ -300,11 +363,11 @@ strong {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transição mais suave */
 }
 
 .gallery-item:hover {
-    transform: translateY(-8px);
+    transform: translateY(-8px) scale(1.01); /* Levemente cresce no hover */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
@@ -329,17 +392,49 @@ strong {
     text-align: center;
     padding: 80px 0;
     box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Novo overlay para a imagem de fundo na seção final-message */
+.final-message-background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('natureza.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2;
+    z-index: 0;
+    mix-blend-mode: multiply;
+    background-color: var(--darkgreen);
+}
+
+.final-message .content-wrapper {
+    position: relative;
+    z-index: 1;
 }
 
 .final-message h3 {
     color: var(--white);
     font-size: 3.2em;
     margin-bottom: 0.6em;
+    position: relative;
+    z-index: 1;
 }
 
-.final-message h3::after {
+/* Animação de linha para o título da seção final (mantém o que já tinha) */
+.final-message-title::after {
     background-color: var(--white);
-    width: 100px;
+    width: 100%;
+    max-width: 450px;
+    transition: transform 1s cubic-bezier(0.25, 0.1, 0.25, 1); /* Ajusta a transição para o scaleX */
+}
+
+.final-message-title.is-visible::after {
+    transform: translateX(-50%) scaleX(1);
 }
 
 .final-message p {
@@ -351,6 +446,72 @@ strong {
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
+/* Estilos e animações para as folhas */
+.leaf {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: var(--lightgreen);
+    border-radius: 50%;
+    opacity: 0;
+    animation: leaf-float 10s infinite ease-in-out;
+    z-index: 0;
+    filter: blur(0.5px);
+}
+
+.leaf-1 {
+    top: 10%;
+    left: 15%;
+    width: 25px;
+    height: 25px;
+    animation-duration: 9s;
+    animation-delay: 0.5s;
+    background-color: rgba(144, 169, 85, 0.8);
+}
+
+.leaf-2 {
+    top: 50%;
+    right: 20%;
+    width: 35px;
+    height: 35px;
+    animation-duration: 12s;
+    animation-delay: 1.5s;
+    background-color: rgba(144, 169, 85, 0.6);
+}
+
+.leaf-3 {
+    bottom: 20%;
+    left: 5%;
+    width: 20px;
+    height: 20px;
+    animation-duration: 8s;
+    animation-delay: 2.5s;
+    background-color: rgba(144, 169, 85, 0.9);
+}
+
+@keyframes leaf-float {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    50% {
+        transform: translate(calc(50vw - 100%), 50px) rotate(180deg);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(calc(100vw - 200%), -100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.leaf.is-visible {
+    opacity: 0.7;
+}
+
+
 /* Footer */
 .main-footer {
     background-color: var(--darkgreen);
@@ -361,20 +522,22 @@ strong {
     border-top: 5px solid var(--mediumgreen);
 }
 
-.footer-content-wrapper {
+.main-footer .footer-content-wrapper {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
     align-items: flex-start;
     max-width: 1200px;
     margin: 0 auto;
-    padding-bottom: 20px;
+    padding-bottom: 30px;
     border-bottom: 1px solid rgba(236, 243, 158, 0.2);
+    gap: 30px;
 }
 
-.footer-section {
+.main-footer .footer-section {
     flex: 1;
-    min-width: 280px;
+    min-width: 250px;
+    max-width: 350px;
     padding: 15px;
     display: flex;
     flex-direction: column;
@@ -382,14 +545,14 @@ strong {
     text-align: center;
 }
 
-.footer-section h4 {
+.main-footer .footer-section h4 {
     font-size: 1.4em;
     color: var(--lightgreen);
     margin-bottom: 15px;
     position: relative;
 }
 
-.footer-section h4::after {
+.main-footer .footer-section h4::after {
     content: '';
     position: absolute;
     left: 50%;
@@ -410,7 +573,7 @@ strong {
 .main-footer a {
     color: var(--cream);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease-in-out;
 }
 
 .main-footer a:hover {
@@ -418,9 +581,7 @@ strong {
     text-decoration: underline;
 }
 
-/* O bloco .social-icons foi removido */
-
-.footer-credits {
+.main-footer .footer-credits {
     width: 100%;
     text-align: center;
     padding-top: 20px;
@@ -428,15 +589,15 @@ strong {
     font-size: 0.9em;
 }
 
-.footer-credits strong {
+.main-footer .footer-credits strong {
     color: var(--white);
 }
 
-.image-source {
+.main-footer .image-source {
     margin-bottom: 5px;
 }
 
-.footer-bottom {
+.main-footer .footer-bottom {
     padding-top: 20px;
     font-size: 0.9em;
     color: rgba(236, 243, 158, 0.7);
@@ -453,13 +614,16 @@ strong {
     .pillars-grid, .image-gallery {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
-    .footer-content-wrapper {
+    .main-footer .footer-content-wrapper {
         flex-direction: column;
         align-items: center;
     }
-    .footer-section {
+    .main-footer .footer-section {
         min-width: unset;
         width: 100%;
+    }
+    .animate-footer-section {
+        transform: translateY(30px);
     }
 }
 
@@ -477,16 +641,16 @@ strong {
     .final-message p { font-size: 1.1em; }
 
 
-    .footer-content-wrapper {
+    .main-footer .footer-content-wrapper {
         gap: 20px;
         padding-bottom: 20px;
         border-bottom: none;
     }
-    .footer-section { padding: 10px 0; }
-    .footer-section h4::after {
+    .main-footer .footer-section { padding: 10px 0; }
+    .main-footer .footer-section h4::after {
         content: none;
     }
-    .main-footer p, .footer-credits p { font-size: 0.9em; }
+    .main-footer p, .main-footer .footer-credits p { font-size: 0.9em; }
 }
 
 @media (max-width: 576px) {
@@ -508,5 +672,5 @@ strong {
     .pillar-card { padding: 25px; }
     .gallery-item img { height: 200px; }
     .main-footer { padding: 30px 15px; }
-    .footer-credits { padding-top: 10px; }
+    .main-footer .footer-credits { padding-top: 10px; }
 }
